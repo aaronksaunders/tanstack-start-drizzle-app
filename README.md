@@ -1,72 +1,84 @@
-# Welcome to TanStack.com!
+# TanStack Start Example
 
-This site is built with TanStack Router!
+This project is a web application built with TanStack Start and Drizzle ORM. It demonstrates a full-stack React application with routing, server-side rendering, and database integration.
 
-- [TanStack Router Docs](https://tanstack.com/router)
+## Features
 
-It's deployed automagically with Vercel!
+- React-based frontend with TanStack Router for routing
+- Server-side rendering (SSR) support
+- SQLite database integration using Drizzle ORM
+- API routes for backend functionality
+- Tailwind CSS for styling
 
-- [Vercel](https://vercel.com/)
+## Technologies Used
+
+- [TanStack Start](https://tanstack.com/start)
+- [TanStack Router](https://tanstack.com/router)
+- [Drizzle ORM](https://orm.drizzle.team/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/)
+- [SQLite](https://www.sqlite.org/)
+
+## Project Structure
+
+- `/app`: Contains the main application code
+- `/drizzle`: Contains database schema and migrations
+- `/public`: Static assets
+- `/app/routes`: Route components and API handlers
+- `/app/components`: Reusable React components
+- `/app/utils`: Utility functions and services
+
+## Setup and Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Set up the database:
+   ```
+   npm run generate
+   npm run push
+   ```
+4. Start the development server:
+   ```
+   npm run dev
+   ```
+
+## Available Scripts
+
+- `npm run dev`: Start the development server
+- `npm run build`: Build the production-ready application
+- `npm run start`: Start the production server
+- `npm run generate`: Generate Drizzle ORM schema
+- `npm run push`: Push schema changes to the database
+- `npm run studio`: Open Drizzle Studio for database management
+- `npm run format`: Format code using Prettier
 
 ## Development
 
-From your terminal:
+This project uses Vite for fast development and building. The development server will rebuild assets on file changes.
 
-```sh
-pnpm install
-pnpm dev
-```
+## Database
 
-This starts your app in development mode, rebuilding assets on file changes.
+The project uses SQLite with Drizzle ORM. The database schema is defined in `drizzle/schema.ts`. You can use Drizzle Studio to manage your database by running `npm run studio`.
 
-## Editing and previewing the docs of TanStack projects locally
+## Routing
 
-The documentations for all TanStack projects except for `React Charts` are hosted on [https://tanstack.com](https://tanstack.com), powered by this TanStack Router app.
-In production, the markdown doc pages are fetched from the GitHub repos of the projects, but in development they are read from the local file system.
+Routing is handled by TanStack Router. Route components are located in the `/app/routes` directory.
 
-Follow these steps if you want to edit the doc pages of a project (in these steps we'll assume it's [`TanStack/form`](https://github.com/tanstack/form)) and preview them locally :
+## Styling
 
-1. Create a new directory called `tanstack`.
+Tailwind CSS is used for styling. The main CSS file is located at `/app/styles/app.css`.
 
-```sh
-mkdir tanstack
-```
+## API Routes
 
-2. Enter the directory and clone this repo and the repo of the project there.
+API routes are defined in the `/app/routes/api` directory. These routes handle server-side logic and database operations.
 
-```sh
-cd tanstack
-git clone git@github.com:TanStack/tanstack.com.git
-git clone git@github.com:TanStack/form.git
-```
+## Deployment
 
-> [!NOTE]
-> Your `tanstack` directory should look like this:
->
-> ```
-> tanstack/
->    |
->    +-- form/
->    |
->    +-- tanstack.com/
-> ```
+To deploy the application, build it using `npm run build` and then start the production server with `npm run start`.
 
-> [!WARNING]
-> Make sure the name of the directory in your local file system matches the name of the project's repo. For example, `tanstack/form` must be cloned into `form` (this is the default) instead of `some-other-name`, because that way, the doc pages won't be found.
-
-3. Enter the `tanstack/tanstack.com` directory, install the dependencies and run the app in dev mode:
-
-```sh
-cd tanstack.com
-pnpm i
-# The app will run on https://localhost:3000 by default
-pnpm dev
-```
-
-4. Now you can visit http://localhost:3000/form/latest/docs/overview in the browser and see the changes you make in `tanstack/form/docs`.
-
-> [!NOTE]
-> The updated pages need to be manually reloaded in the browser.
-
-> [!WARNING]
-> You will need to update the `docs/config.json` file (in the project's repo) if you add a new doc page!
+For more information on TanStack Router, visit the [official documentation](https://tanstack.com/router).
