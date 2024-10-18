@@ -19,6 +19,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as UsersIndexImport } from './routes/users.index'
 import { Route as ProjectsIndexImport } from './routes/projects.index'
 import { Route as UsersUserIdImport } from './routes/users.$userId'
+import { Route as ProjectsNewImport } from './routes/projects.new'
 import { Route as ProjectsProjectIdImport } from './routes/projects.$projectId'
 
 // Create/Update Routes
@@ -61,6 +62,11 @@ const ProjectsIndexRoute = ProjectsIndexImport.update({
 const UsersUserIdRoute = UsersUserIdImport.update({
   path: '/$userId',
   getParentRoute: () => UsersRoute,
+} as any)
+
+const ProjectsNewRoute = ProjectsNewImport.update({
+  path: '/new',
+  getParentRoute: () => ProjectsRoute,
 } as any)
 
 const ProjectsProjectIdRoute = ProjectsProjectIdImport.update({
@@ -114,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsProjectIdImport
       parentRoute: typeof ProjectsImport
     }
+    '/projects/new': {
+      id: '/projects/new'
+      path: '/new'
+      fullPath: '/projects/new'
+      preLoaderRoute: typeof ProjectsNewImport
+      parentRoute: typeof ProjectsImport
+    }
     '/users/$userId': {
       id: '/users/$userId'
       path: '/$userId'
@@ -142,11 +155,13 @@ declare module '@tanstack/react-router' {
 
 interface ProjectsRouteChildren {
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
+  ProjectsNewRoute: typeof ProjectsNewRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
 const ProjectsRouteChildren: ProjectsRouteChildren = {
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
+  ProjectsNewRoute: ProjectsNewRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
 
@@ -173,6 +188,7 @@ export interface FileRoutesByFullPath {
   '/redirect': typeof RedirectRoute
   '/users': typeof UsersRouteWithChildren
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/projects/new': typeof ProjectsNewRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/projects/': typeof ProjectsIndexRoute
   '/users/': typeof UsersIndexRoute
@@ -183,6 +199,7 @@ export interface FileRoutesByTo {
   '': typeof LayoutRoute
   '/redirect': typeof RedirectRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/projects/new': typeof ProjectsNewRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/projects': typeof ProjectsIndexRoute
   '/users': typeof UsersIndexRoute
@@ -196,6 +213,7 @@ export interface FileRoutesById {
   '/redirect': typeof RedirectRoute
   '/users': typeof UsersRouteWithChildren
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/projects/new': typeof ProjectsNewRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/projects/': typeof ProjectsIndexRoute
   '/users/': typeof UsersIndexRoute
@@ -210,6 +228,7 @@ export interface FileRouteTypes {
     | '/redirect'
     | '/users'
     | '/projects/$projectId'
+    | '/projects/new'
     | '/users/$userId'
     | '/projects/'
     | '/users/'
@@ -219,6 +238,7 @@ export interface FileRouteTypes {
     | ''
     | '/redirect'
     | '/projects/$projectId'
+    | '/projects/new'
     | '/users/$userId'
     | '/projects'
     | '/users'
@@ -230,6 +250,7 @@ export interface FileRouteTypes {
     | '/redirect'
     | '/users'
     | '/projects/$projectId'
+    | '/projects/new'
     | '/users/$userId'
     | '/projects/'
     | '/users/'
@@ -281,6 +302,7 @@ export const routeTree = rootRoute
       "filePath": "projects.tsx",
       "children": [
         "/projects/$projectId",
+        "/projects/new",
         "/projects/"
       ]
     },
@@ -296,6 +318,10 @@ export const routeTree = rootRoute
     },
     "/projects/$projectId": {
       "filePath": "projects.$projectId.tsx",
+      "parent": "/projects"
+    },
+    "/projects/new": {
+      "filePath": "projects.new.tsx",
       "parent": "/projects"
     },
     "/users/$userId": {

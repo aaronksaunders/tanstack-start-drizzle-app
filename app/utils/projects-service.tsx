@@ -1,6 +1,6 @@
 import { createServerFn } from '@tanstack/start';
 import db from 'drizzle/db';
-import { projects } from 'drizzle/schema';
+import { NewProject, projects } from 'drizzle/schema';
 import { eq } from 'drizzle-orm';
 
 /**
@@ -43,5 +43,23 @@ export const fetchProjects = createServerFn('GET', async () => {
   } catch (error) {
     console.error('Error fetching projects:', error);
     throw new Error('Failed to fetch projects');
+  }
+});
+
+/**
+ * Creates a new project.
+ * @param projectData - The data for the new project.
+ * @returns A Promise that resolves to the created project data.
+ */
+export const createProject = createServerFn('POST', async (projectData: NewProject) => {
+  console.info('Creating new project...');
+
+  try {
+    const [newProject] = await db.insert(projects).values(projectData).returning();
+    console.log('[new project] ==>', newProject);
+    return newProject;
+  } catch (error) {
+    console.error('Error creating project:', error);
+    throw new Error('Failed to create project');
   }
 });
