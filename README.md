@@ -1,6 +1,7 @@
 # TanStack Start Example
 
-This project is a web application built with TanStack Start and Drizzle ORM. It demonstrates a full-stack React application with routing, server-side rendering, and database integration.
+This project is a web application built with TanStack Start and Drizzle ORM. It demonstrates a
+full-stack React application with routing, server-side rendering, and database integration.
 
 ## Features
 
@@ -24,11 +25,12 @@ This project is a web application built with TanStack Start and Drizzle ORM. It 
 ## Project Structure
 
 - `/app`: Contains the main application code
-- `/drizzle`: Contains database schema and migrations
+  - `/components`: Reusable React components
+  - `/routes`: Route components and API handlers
+  - `/styles`: CSS styles, including Tailwind configuration
+  - `/utils`: Utility functions and services
+- `/drizzle`: Database schema and migrations
 - `/public`: Static assets
-- `/app/routes`: Route components and API handlers
-- `/app/components`: Reusable React components
-- `/app/utils`: Utility functions and services
 
 ## Setup and Installation
 
@@ -59,11 +61,13 @@ This project is a web application built with TanStack Start and Drizzle ORM. It 
 
 ## Development
 
-This project uses Vite for fast development and building. The development server will rebuild assets on file changes.
+This project uses Vite for fast development and building. The development server will rebuild assets
+on file changes.
 
 ## Database
 
-The project uses SQLite with Drizzle ORM. The database schema is defined in `drizzle/schema.ts`. You can use Drizzle Studio to manage your database by running `npm run studio`.
+The project uses SQLite with Drizzle ORM. The database schema is defined in `drizzle/schema.ts`. You
+can use Drizzle Studio to manage your database by running `npm run studio`.
 
 ## Routing
 
@@ -75,10 +79,13 @@ Tailwind CSS is used for styling. The main CSS file is located at `/app/styles/a
 
 ## API Routes
 
-API routes are defined in the `/app/routes/api` directory. These routes handle server-side logic and database operations.
+API routes are defined in the `/app/routes/api` directory. These routes handle server-side logic and
+database operations.
 
 ## Deployment
 
-To deploy the application, build it using `npm run build` and then start the production server with `npm run start`.
+To deploy the application, build it using `npm run build` and then start the production server with
+`npm run start`.
 
-For more information on TanStack Router, visit the [official documentation](https://tanstack.com/router).
+For more information on TanStack Router, visit the
+[official documentation](https://tanstack.com/router).

@@ -1,6 +1,3 @@
-import {
-  createStartAPIHandler,
-  defaultAPIFileRouteHandler,
-} from "@tanstack/start/api";
+import { createStartAPIHandler, defaultAPIFileRouteHandler } from '@tanstack/start/api';
 
 export default createStartAPIHandler(defaultAPIFileRouteHandler);
