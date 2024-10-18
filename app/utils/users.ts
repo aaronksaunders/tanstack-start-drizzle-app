@@ -1,6 +1,6 @@
 import { createServerFn } from '@tanstack/start';
 import db from 'drizzle/db';
-import { users } from 'drizzle/schema';
+import { users, NewUser } from 'drizzle/schema';
 import { eq } from 'drizzle-orm'; // Add this import
 
 /**
@@ -45,5 +45,24 @@ export const fetchUser = createServerFn('GET', async (userId: string) => {
   } catch (error) {
     console.error('Error fetching user:', error);
     throw new Error('Failed to fetch user');
+  }
+});
+
+/**
+ * Creates a new user in the database.
+ * @param userData - The data for the new user.
+ * @returns A Promise that resolves to the created user data.
+ * @throws {Error} If there's a database error.
+ */
+export const createUser = createServerFn('POST', async (userData: NewUser) => {
+  console.info('Creating new user...');
+
+  try {
+    const [newUser] = await db.insert(users).values(userData).returning();
+    console.log('[new user] ==>', newUser);
+    return newUser;
+  } catch (error) {
+    console.error('Error creating user:', error);
+    throw new Error('Failed to create user');
   }
 });
