@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useState, useEffect } from 'react';
 import { createProject } from '~/utils/projects-service';
-import { fetchUsers } from '~/utils/users';
+import { fetchUsers } from '~/utils/users-service';
 import { ProjectStatus, User } from 'drizzle/schema';
 
 export const Route = createFileRoute('/projects/new')({

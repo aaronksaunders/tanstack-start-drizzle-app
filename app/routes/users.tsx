@@ -1,5 +1,5 @@
 import { Link, Outlet, createFileRoute } from '@tanstack/react-router';
-import { fetchUsers } from '~/utils/users';
+import { fetchUsers } from '~/utils/users-service';
 
 /**
  * Route configuration for the users list page.

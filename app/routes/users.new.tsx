@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useState } from 'react';
-import { createUser } from '~/utils/users';
+import { createUser } from '~/utils/users-service';
 
 export const Route = createFileRoute('/users/new')({
   component: NewUserComponent,

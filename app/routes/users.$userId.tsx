@@ -1,7 +1,7 @@
 import { ErrorComponent, createFileRoute } from '@tanstack/react-router';
 import type { ErrorComponentProps } from '@tanstack/react-router';
 import { NotFound } from '~/components/NotFound';
-import { fetchUser } from '~/utils/users';
+import { fetchUser } from '~/utils/users-service';
 
 /**
  * Route configuration for individual user pages.
