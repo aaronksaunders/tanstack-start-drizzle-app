@@ -3,6 +3,8 @@
 This project is a web application built with TanStack Start and Drizzle ORM. It demonstrates a
 full-stack React application with routing, server-side rendering, and database integration.
 
+VIDEO - https://youtu.be/oOqjZWpb-EI?feature=shared
+
 ## Features
 
 - React-based frontend with TanStack Router for routing
