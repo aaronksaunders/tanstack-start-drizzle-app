@@ -11,7 +11,7 @@ import { fetchUser } from '~/utils/users-service';
  */
 export const Route = createFileRoute('/users/$userId')({
   loader: async ({ params: { userId } }) => {
-    return await fetchUser(userId);
+    return await fetchUser({ data: Number(userId) });
   },
   errorComponent: UserErrorComponent,
   component: UserComponent,

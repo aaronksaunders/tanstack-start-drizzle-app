@@ -11,7 +11,7 @@ import { fetchProject } from '~/utils/projects-service';
  * @see {@link https://tanstack.com/router/latest/docs/framework/react/guide/path-params TanStack Router - Path Params}
  */
 export const Route = createFileRoute('/projects/$projectId')({
-  loader: async ({ params: { projectId } }) => fetchProject(projectId),
+  loader: async ({ params: { projectId } }) => fetchProject({ data: Number(projectId) }),
   errorComponent: ProjectErrorComponent as any,
   component: ProjectComponent,
   notFoundComponent: () => {

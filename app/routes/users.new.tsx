@@ -14,7 +14,7 @@ function NewUserComponent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await createUser({ fullName, email });
+      await createUser({ data: { fullName, email } });
       navigate({ to: '/users' });
     } catch (error) {
       console.error('Error creating user:', error);

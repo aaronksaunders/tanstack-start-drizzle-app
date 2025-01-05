@@ -10,12 +10,4 @@ import { projects } from './schema';
 const sqlite = new Database('sqlite.db');
 export const db = drizzle(sqlite);
 
-console.log('projects ==>', projects);
-
-console.log('db ==>', db);
-
-// test query
-const allProjects = db.select().from(projects).all();
-console.log('projects ==>', allProjects);
-
 export default db;

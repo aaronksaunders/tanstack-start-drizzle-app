@@ -6,6 +6,9 @@ import { ProjectStatus, User } from 'drizzle/schema';
 
 export const Route = createFileRoute('/projects/new')({
   component: NewProjectComponent,
+  loader: async () => {
+    return await fetchUsers();
+  },
 });
 
 function NewProjectComponent() {
@@ -14,20 +17,20 @@ function NewProjectComponent() {
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState<ProjectStatus>('not_started');
   const [ownerId, setOwnerId] = useState('');
-  const [users, setUsers] = useState<Array<User>>([]);
-
-  useEffect(() => {
-    async function loadUsers() {
-      const fetchedUsers = await fetchUsers();
-      setUsers(fetchedUsers);
-    }
-    loadUsers();
-  }, []);
+  const users = Route.useLoaderData();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await createProject({ name, description, status, ownerId: parseInt(ownerId, 10) });
+      const response = await createProject({
+        data: {
+          name,
+          description,
+          status,
+          ownerId: Number(ownerId),
+        },
+      });
+      console.log('response', response);
       navigate({ to: '/projects' });
     } catch (error) {
       console.error('Error creating project:', error);
