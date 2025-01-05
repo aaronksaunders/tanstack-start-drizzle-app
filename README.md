@@ -1,4 +1,4 @@
-# TanStack Start Example
+# TanStack Start Example - update 1/5/2025
 
 This project is a web application built with TanStack Start and Drizzle ORM. It demonstrates a
 full-stack React application with routing, server-side rendering, and database integration.
