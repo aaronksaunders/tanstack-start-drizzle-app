@@ -1,0 +1,80 @@
+import { Link, Outlet, ScrollRestoration, createRootRoute } from '@tanstack/react-router';
+import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+import { Meta, Scripts } from '@tanstack/start';
+import * as React from 'react';
+import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary';
+import { NotFound } from '~/components/NotFound';
+import appCss from '~/styles/app.css?url';
+import { seo } from '~/utils/seo';
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      ...seo({
+        title: 'TanStack Start | Type-Safe, Client-First, Full-Stack React Framework',
+        description: `TanStack Start is a type-safe, client-first, full-stack React framework.`,
+      }),
+    ],
+    links: [{ rel: 'stylesheet', href: appCss }],
+  }),
+  component: RootComponent,
+});
+
+function RootComponent() {
+  return (
+    <RootDocument>
+      <Outlet />
+    </RootDocument>
+  );
+}
+
+function RootDocument({ children }: { children: React.ReactNode }) {
+  return (
+    <html suppressHydrationWarning>
+      <head>
+        <Meta />
+      </head>
+      <body>
+        <div className='p-2 flex gap-2 text-lg'>
+          <Link
+            to='/'
+            activeProps={{
+              className: 'font-bold',
+            }}
+            activeOptions={{ exact: true }}>
+            Home
+          </Link>{' '}
+          <Link
+            to='/projects'
+            activeProps={{
+              className: 'font-bold',
+            }}>
+            Projects
+          </Link>{' '}
+          <Link
+            to='/users'
+            activeProps={{
+              className: 'font-bold',
+            }}>
+            Users
+          </Link>{' '}
+          <Link
+            // @ts-expect-error
+            to='/this-route-does-not-exist'
+            activeProps={{
+              className: 'font-bold',
+            }}>
+            This Route Does Not Exist
+          </Link>
+        </div>
+        <hr />
+        {children}
+        <ScrollRestoration />
+        <TanStackRouterDevtools position='bottom-right' />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
